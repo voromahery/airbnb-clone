@@ -28465,6 +28465,25 @@ function Stay({
     className: "title"
   }, stay.title)));
 }
+},{"react":"../node_modules/react/index.js"}],"js/SearchModal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SearchModal;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SearchModal({
+  stay
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    class: "search-modal"
+  }, /*#__PURE__*/React.createElement("span", null, stay.city));
+}
 },{"react":"../node_modules/react/index.js"}],"js/App.js":[function(require,module,exports) {
 "use strict";
 
@@ -28478,6 +28497,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _stays = _interopRequireDefault(require("../../stays.json"));
 
 var _Stay = _interopRequireDefault(require("./Stay.js"));
+
+var _SearchModal = _interopRequireDefault(require("./SearchModal.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28545,12 +28566,24 @@ function App() {
   }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
+  })), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", {
+    for: ""
+  }, "Location", /*#__PURE__*/_react.default.createElement("input", {
+    type: "text"
+  })), /*#__PURE__*/_react.default.createElement("label", {
+    for: ""
+  }, "Guests", /*#__PURE__*/_react.default.createElement("input", {
+    type: "text"
+  }))), apartment.map(stay => {
+    return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, stay.city));
+  }).filter(stay => /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
+    stay: stay
   })));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json","./Stay.js":"js/Stay.js"}],"js/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json","./Stay.js":"js/Stay.js","./SearchModal.js":"js/SearchModal.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

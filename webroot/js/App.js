@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import stays from '../../stays.json';
 import Stay from './Stay.js';
+import SearchModal from './SearchModal.js';
 
 // To make it display only six apartment
 stays.length = 6;
@@ -24,10 +25,10 @@ function App() {
 
         if (apartment !== "") {
             const nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
-            console.log("name",nameList);
+            console.log("name", nameList);
             setSearchStay(nameList);
             return nameList;
-        } 
+        }
         else {
             setSearchStay(apartment);
         }
@@ -53,7 +54,25 @@ function App() {
                 </div>
             </div>
             {apartment.map(stay =>
-                <Stay key={stay.id} stay={stay}/>
+                <Stay key={stay.id} stay={stay} />
+            )}
+             <form>
+                <label for="">Location
+                <input type="text" />
+                </label>
+                <label for="">Guests
+                <input type="text" />
+                </label>
+            </form>
+            {apartment.map(stay => {
+                return (
+                    <ul>
+                        <li>{stay.city}</li>
+                    </ul>
+                )
+            })
+            .filter(stay =>
+                <SearchModal stay={stay} />
             )}
         </>
     )
