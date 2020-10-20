@@ -28427,7 +28427,45 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"js/App.js":[function(require,module,exports) {
+},{}],"js/Stay.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Stay;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Stay({
+  stay
+}) {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "card",
+    key: stay.id
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: stay.photo,
+    className: "",
+    alt: ""
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "details"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "super-host"
+  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "type"
+  }, stay.type, " "), /*#__PURE__*/_react.default.createElement("span", {
+    className: "number-of-bed"
+  }, ". ", stay.beds, " beds")), /*#__PURE__*/_react.default.createElement("span", {
+    className: "star-rating"
+  }, stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "title"
+  }, stay.title)));
+}
+},{"react":"../node_modules/react/index.js"}],"js/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28438,6 +28476,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("../../stays.json"));
+
+var _Stay = _interopRequireDefault(require("./Stay.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28502,33 +28542,15 @@ function App() {
     className: "heading"
   }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-stays"
-  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement("div", {
-    className: "card",
-    key: stay.id
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: stay.photo,
-    className: "",
-    alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "details"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "super-host"
-  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement("span", {
-    className: "type"
-  }, stay.type, " "), /*#__PURE__*/_react.default.createElement("span", {
-    className: "number-of-bed"
-  }, ". ", stay.beds, " beds")), /*#__PURE__*/_react.default.createElement("span", {
-    className: "star-rating"
-  }, stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
-    className: "title"
-  }, stay.title))));
+  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
+    key: stay.id,
+    stay: stay
+  })));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json"}],"js/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json","./Stay.js":"js/Stay.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28538,13 +28560,6 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 var _App = _interopRequireDefault(require("./App.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class Main extends _react.default.Component {
-  render() {
-    return /*#__PURE__*/_react.default.createElement("div", null);
-  }
-
-}
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App.js":"js/App.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import stays from '../../stays.json'
+import stays from '../../stays.json';
+import Stay from './Stay.js';
 
 // To make it display only six apartment
 stays.length = 6;
@@ -52,18 +53,7 @@ function App() {
                 </div>
             </div>
             {apartment.map(stay =>
-                <div className="card" key={stay.id}>
-                    <img src={stay.photo} className="" alt="" />
-                    <div className="details">
-                        <button className="super-host">Super host</button>
-                        <div className="container">
-                            <span className="type">{stay.type} </span>
-                            <span className="number-of-bed">. {stay.beds} beds</span>
-                        </div>
-                        <span className="star-rating">{stay.rating}</span>
-                    </div>
-                    <p className="title">{stay.title}</p>
-                </div>
+                <Stay key={stay.id} stay={stay}/>
             )}
         </>
     )
