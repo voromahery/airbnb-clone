@@ -28453,7 +28453,37 @@ function App() {
 
   const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
   console.log(apartment);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, apartment.map(stay => /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+    className: "header"
+  }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "page-title"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "/",
+    className: "page-title-link"
+  }, "Windbnb")), /*#__PURE__*/_react.default.createElement("form", {
+    className: "search-form"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "search"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "search-place",
+    id: "search",
+    className: "search"
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "add-guest",
+    id: "addGuest",
+    className: "add-guest",
+    placeholder: "Add guest"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "search-button"
+  }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "stay-details"
+  }, /*#__PURE__*/_react.default.createElement("h2", {
+    className: "heading"
+  }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "number-of-stays"
+  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement("div", {
     className: "card",
     key: stay.id
   }, /*#__PURE__*/_react.default.createElement("img", {

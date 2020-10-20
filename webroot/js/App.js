@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import stays from '../../stays.json'
 
 // To make it display only six apartment
-    stays.length = 6;
+stays.length = 6;
 
 function App() {
     const [apartment, setApartment] = useState(stays);
@@ -13,6 +13,23 @@ function App() {
 
     return (
         <>
+            <div>
+                <header className="header">
+                    <h1 className="page-title">
+                        <a href="/" className="page-title-link">Windbnb</a>
+                    </h1>
+                    <form className="search-form">
+                        <label htmlFor="search"></label>
+                        <input type="text" name="search-place" id="search" className="search" />
+                        <input type="text" name="add-guest" id="addGuest" className="add-guest" placeholder="Add guest" />
+                        <button className="search-button">Search</button>
+                    </form>
+                </header>
+                <div className="stay-details">
+                    <h2 className="heading">Stay in Finland</h2>
+                    <span className="number-of-stays">12+ stays</span>
+                </div>
+            </div>
             {apartment.map(stay =>
                 <div className="card" key={stay.id}>
                     <img src={stay.photo} className="" alt="" />
