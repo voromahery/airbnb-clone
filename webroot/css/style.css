@@ -1,3 +1,80 @@
+@font-face {
+    font-family: 'danFont';
+    src: url("../fonts/Montserrat-Regular.woff2"),
+        url("../fonts/Montserrat-Regular.woff");
+        font-weight: 400;
+}
+
+@font-face {
+    font-family: 'danFont';
+    src: url("../fonts/Montserrat-Medium.woff2"),
+         url("../fonts/Montserrat-Medium.woff");
+        font-weight: 500;
+}
+
+@font-face {
+    font-family: 'danFont';
+    src: url("../fonts/Montserrat-bold.woff2"),
+        url("../fonts/Montserrat-bold.woff");
+        font-weight: 700;
+}
+
+body {
+    font-family: 'danFont';
+}
+
 img {
     max-width: 100%;
+    border-radius: 24px;
+}
+
+.page-title {
+    text-indent: -9999px;
+}
+
+.page-title-link {
+    display: block;
+    max-width: calc(69px + 21px + 5px);
+    background-image: url("../images/logo.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.search {
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: none;
+    max-width: 100%;
+    height: 55px;
+    /* padding-right: 38px;
+    padding-left: calc(16px + 16px + 106px); */
+}
+
+.super-host {
+    background-color: #FFFFFF;
+    border: 1px solid #4F4F4F;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.type,
+.number-of-bed {
+    color: #828282;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+}
+
+.star-rating::before {
+    content: "";
+    background-image: url("../images/star-rating.svg");
+    width: 14px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    flex-direction: row;
+    cursor: pointer;
 }

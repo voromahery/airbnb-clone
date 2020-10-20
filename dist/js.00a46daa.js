@@ -28448,7 +28448,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function App() {
   const [apartment, setApartment] = (0, _react.useState)([]); // To make it display only six apartment
 
-  _stays.default.length = 6;
+  _stays.default.length = 6; // Adding different id to each object
 
   const id = _stays.default.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -28460,12 +28460,14 @@ function App() {
     src: stay.photo,
     className: "",
     alt: ""
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Super host"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "super-host"
+  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "type"
   }, stay.type), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-bed"
-  }, stay.beds), /*#__PURE__*/_react.default.createElement("span", {
-    className: "rating"
+  }, ". ", stay.beds, " beds"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "star-rating"
   }, stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
     className: "title"
   }, stay.title))));
@@ -28520,7 +28522,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57660" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62536" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
