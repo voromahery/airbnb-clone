@@ -28460,13 +28460,17 @@ function App() {
     src: stay.photo,
     className: "",
     alt: ""
-  }), /*#__PURE__*/_react.default.createElement("button", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "details"
+  }, /*#__PURE__*/_react.default.createElement("button", {
     className: "super-host"
-  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("span", {
     className: "type"
-  }, stay.type), /*#__PURE__*/_react.default.createElement("span", {
+  }, stay.type, " "), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-bed"
-  }, ". ", stay.beds, " beds"), /*#__PURE__*/_react.default.createElement("span", {
+  }, ". ", stay.beds, " beds")), /*#__PURE__*/_react.default.createElement("span", {
     className: "star-rating"
   }, stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
     className: "title"
