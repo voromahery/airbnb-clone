@@ -28445,15 +28445,15 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+// To make it display only six apartment
+_stays.default.length = 6;
+
 function App() {
-  const [apartment, setApartment] = (0, _react.useState)([]); // To make it display only six apartment
+  const [apartment, setApartment] = (0, _react.useState)(_stays.default); // Adding different id to each object
 
-  _stays.default.length = 6; // Adding different id to each object
-
-  const id = _stays.default.forEach((stay, index) => stay.id = Date.now() + index);
-
-  console.log(_stays.default);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, _stays.default.map(stay => /*#__PURE__*/_react.default.createElement("div", {
+  const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
+  console.log(apartment);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, apartment.map(stay => /*#__PURE__*/_react.default.createElement("div", {
     className: "card",
     key: stay.id
   }, /*#__PURE__*/_react.default.createElement("img", {

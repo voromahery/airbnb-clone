@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import stays from '../../stays.json'
 
-function App() {
-    const [apartment, setApartment] = useState([]);
-
-    // To make it display only six apartment
+// To make it display only six apartment
     stays.length = 6;
 
+function App() {
+    const [apartment, setApartment] = useState(stays);
+
     // Adding different id to each object
-    const id = stays.forEach((stay, index) => stay.id = Date.now() + index);
-    console.log(stays);
+    const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
+    console.log(apartment);
 
     return (
         <>
-            {stays.map(stay =>
+            {apartment.map(stay =>
                 <div className="card" key={stay.id}>
                     <img src={stay.photo} className="" alt="" />
                     <div className="details">

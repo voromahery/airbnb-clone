@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="./css/style.css">
     <title>Windbnb</title>
 </head>
+
 <body>
-    <header class="header">
-        <h1 class="page-title">
-            <a href="/" class="page-title-link">Windbnb</a> 
-        </h1>
-    </header>
     <main>
-        <form class="search-form">
-            <label for="search"></label>
-            <input type="text" name= search id="search" class="search" placeholder="Add guest">
-        </form>
-        <h2 class="heading">Stay in Finland</h2>
-        <span class="number-of-stays">12+ stays</span>
+        <header class="header">
+            <h1 class="page-title">
+                <a href="/" class="page-title-link">Windbnb</a>
+            </h1>
+            <form class="search-form">
+                <label for="search"></label>
+                <input type="text" name=search-place id="search" class="search">
+                <input type="text" name="add-guest" id="addGuest" class="add-guest" placeholder="Add guest">
+                <button class="search-button">Search</button>
+            </form>
+        </header>
+        <div class="stay-details">
+            <h2 class="heading">Stay in Finland</h2>
+            <span class="number-of-stays">12+ stays</span>
+        </div>
         <div id="root"></div>
     </main>
-    <footer>H. Daniel Fabrice @ DevChallenges.io</footer>
+    <footer>
+        <a href="/">H. Daniel Fabrice @ DevChallenges.io</a>
+    </footer>
     <script src="./js/index.js"></script>
 </body>
+
 </html>
