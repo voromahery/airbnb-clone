@@ -28449,10 +28449,28 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 _stays.default.length = 6;
 
 function App() {
-  const [apartment, setApartment] = (0, _react.useState)(_stays.default); // Adding different id to each object
+  const [apartment, setApartment] = (0, _react.useState)(_stays.default);
+  const [searchStay, setSearchStay] = (0, _react.useState)(""); // Adding different id to each object
 
   const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
-  console.log(apartment);
+
+  const handleChange = e => {
+    const form = e.currentTarget;
+    const data = form.value; // let searchList = apartment.map(stay => {
+    //     return (stay.city.toLowerCase());
+    // })
+    // console.log("map", searchList);
+
+    if (apartment !== "") {
+      const nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
+      console.log("name", nameList);
+      setSearchStay(nameList);
+      return nameList;
+    } else {
+      setSearchStay(apartment);
+    }
+  };
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
     className: "header"
   }, /*#__PURE__*/_react.default.createElement("h1", {
@@ -28468,6 +28486,7 @@ function App() {
     type: "text",
     name: "search-place",
     id: "search",
+    onChange: handleChange,
     className: "search"
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
