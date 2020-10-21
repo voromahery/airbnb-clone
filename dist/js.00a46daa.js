@@ -28517,18 +28517,15 @@ function App() {
 
   const handleChange = e => {
     const form = e.currentTarget;
-    const data = form.value; // let searchList = apartment.map(stay => {
-    //     return (stay.city.toLowerCase());
-    // })
-    // console.log("map", searchList);
+    const data = form.value;
 
     if (apartment !== "") {
-      const nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
+      let nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
       console.log("name", nameList);
-      setSearchStay(nameList);
+      setApartment(nameList);
       return nameList;
     } else {
-      setSearchStay(apartment);
+      setApartment(apartment);
     }
   };
 
@@ -28563,22 +28560,23 @@ function App() {
     className: "heading"
   }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-stays"
-  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
+  }, "12+ stays"))), apartment.filter(stay => stay).map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
   })), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", {
-    for: ""
-  }, "Location", /*#__PURE__*/_react.default.createElement("input", {
-    type: "text"
-  })), /*#__PURE__*/_react.default.createElement("label", {
-    for: ""
+    htmlFor: ""
+  }, "Location", /*#__PURE__*/_react.default.createElement("select", {
+    onChange: handleChange
+  }, apartment.map(stay => {
+    return /*#__PURE__*/_react.default.createElement("option", {
+      value: stay.city,
+      key: stay.id
+    }, stay.city, ", ", stay.country);
+  }))), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: ""
   }, "Guests", /*#__PURE__*/_react.default.createElement("input", {
     type: "text"
-  }))), apartment.map(stay => {
-    return /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, stay.city));
-  }).filter(stay => /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
-    stay: stay
-  })));
+  }))));
 }
 
 var _default = App;
@@ -28623,7 +28621,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64512" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

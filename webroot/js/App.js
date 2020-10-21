@@ -12,25 +12,17 @@ function App() {
 
     // Adding different id to each object
     const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
-
     const handleChange = e => {
         const form = e.currentTarget;
         const data = form.value;
-
-        // let searchList = apartment.map(stay => {
-        //     return (stay.city.toLowerCase());
-        // })
-
-        // console.log("map", searchList);
-
         if (apartment !== "") {
-            const nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
+           let nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
             console.log("name", nameList);
-            setSearchStay(nameList);
+            setApartment(nameList);
             return nameList;
         }
         else {
-            setSearchStay(apartment);
+            setApartment(apartment);
         }
     }
 
@@ -53,27 +45,23 @@ function App() {
                     <span className="number-of-stays">12+ stays</span>
                 </div>
             </div>
-            {apartment.map(stay =>
+            {apartment.filter(stay => stay).map(stay =>
                 <Stay key={stay.id} stay={stay} />
             )}
-             <form>
-                <label for="">Location
-                <input type="text" />
+            <form>
+                <label htmlFor="">Location
+                <select onChange={handleChange}>
+                        {apartment.map(stay => {
+                            return (
+                            <option value={stay.city} key={stay.id}>{stay.city}, {stay.country}</option>
+                            )
+                        })}
+                    </select>
                 </label>
-                <label for="">Guests
+                <label htmlFor="">Guests
                 <input type="text" />
                 </label>
             </form>
-            {apartment.map(stay => {
-                return (
-                    <ul>
-                        <li>{stay.city}</li>
-                    </ul>
-                )
-            })
-            .filter(stay =>
-                <SearchModal stay={stay} />
-            )}
         </>
     )
 }
