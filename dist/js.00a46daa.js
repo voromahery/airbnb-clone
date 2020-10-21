@@ -28511,7 +28511,8 @@ _stays.default.length = 6;
 
 function App() {
   const [apartment, setApartment] = (0, _react.useState)(_stays.default);
-  const [searchStay, setSearchStay] = (0, _react.useState)(_stays.default); // Adding different id to each object
+  const [adultNumber, setAdultNumber] = (0, _react.useState)(0);
+  const [childrenNumber, setChildrenNumber] = (0, _react.useState)(0); // Adding different id to each object
 
   const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -28525,10 +28526,47 @@ function App() {
       console.log("name", nameList);
       setApartment(nameList);
       return apartment;
-    } else {
-      setSearchStay(searchStay);
-      console.log(searchStay, "Dan");
     }
+  };
+
+  const increment = () => {
+    console.log('yes');
+    let increment = [];
+    setAdultNumber(prevCount => prevCount + 1);
+    increment = _stays.default.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+    console.log("name", increment);
+    setApartment(increment);
+    return apartment;
+  };
+
+  const decrement = () => {
+    let decrement = [];
+    console.log('yes');
+    setAdultNumber(prevCount => prevCount - 1);
+    decrement = _stays.default.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+    console.log("name", decrement);
+    setApartment(decrement);
+    return apartment;
+  };
+
+  const incrementChildren = () => {
+    console.log('yes');
+    let increment = [];
+    setChildrenNumber(prevCount => prevCount + 1);
+    increment = _stays.default.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+    console.log("name", increment);
+    setApartment(increment);
+    return apartment;
+  };
+
+  const decrementChildren = () => {
+    let decrement = [];
+    console.log('yes');
+    setChildrenNumber(prevCount => prevCount - 1);
+    decrement = _stays.default.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+    console.log("name", decrement);
+    setApartment(decrement);
+    return apartment;
   };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
@@ -28547,7 +28585,7 @@ function App() {
     name: "search-place",
     id: "search",
     className: "search",
-    onChange: handleChange
+    defaultValue: `${_stays.default[0].city}, ${_stays.default[0].country}`
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "add-guest",
@@ -28565,22 +28603,49 @@ function App() {
   }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  })), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", {
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "modal-title"
+  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "remove-modal"
+  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
-  }, "Location", /*#__PURE__*/_react.default.createElement("select", {
-    onChange: handleChange
+  }, "Location"), /*#__PURE__*/_react.default.createElement("select", {
+    onChange: handleChange,
+    className: "city-to-stay"
   }, /*#__PURE__*/_react.default.createElement("option", {
-    value: "--Add an apartment--"
-  }, "--Add an apartment--"), _stays.default.map(stay => {
+    value: _stays.default[0].city
+  }, _stays.default[0].city, ",", _stays.default[0].country), _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement("option", {
       value: stay.city,
       key: stay.id
     }, stay.city, ", ", stay.country);
-  }))), /*#__PURE__*/_react.default.createElement("label", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
-  }, "Guests", /*#__PURE__*/_react.default.createElement("input", {
-    type: "text"
-  }))));
+  }, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    className: "number-of-guests",
+    placeholder: "Add guests"
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: increment
+  }, "+"), " ", adultNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: decrement
+  }, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: incrementChildren
+  }, "+"), " ", childrenNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: decrementChildren
+  }, "-"))), /*#__PURE__*/_react.default.createElement("button", {
+    className: "modal-search-button"
+  }, "Search"))));
 }
 
 var _default = App;
@@ -28625,7 +28690,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51732" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60166" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
