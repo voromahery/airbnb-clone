@@ -28511,21 +28511,23 @@ _stays.default.length = 6;
 
 function App() {
   const [apartment, setApartment] = (0, _react.useState)(_stays.default);
-  const [searchStay, setSearchStay] = (0, _react.useState)(""); // Adding different id to each object
+  const [searchStay, setSearchStay] = (0, _react.useState)(_stays.default); // Adding different id to each object
 
-  const id = apartment.forEach((stay, index) => stay.id = Date.now() + index);
+  const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
   const handleChange = e => {
     const form = e.currentTarget;
     const data = form.value;
 
     if (apartment !== "") {
-      let nameList = apartment.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
+      let nameList = [];
+      nameList = _stays.default.filter(stay => stay.city.toLowerCase().includes(data.toLowerCase()));
       console.log("name", nameList);
       setApartment(nameList);
-      return nameList;
+      return apartment;
     } else {
-      setApartment(apartment);
+      setSearchStay(searchStay);
+      console.log(searchStay, "Dan");
     }
   };
 
@@ -28544,8 +28546,8 @@ function App() {
     type: "text",
     name: "search-place",
     id: "search",
-    onChange: handleChange,
-    className: "search"
+    className: "search",
+    onChange: handleChange
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "add-guest",
@@ -28560,14 +28562,16 @@ function App() {
     className: "heading"
   }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-stays"
-  }, "12+ stays"))), apartment.filter(stay => stay).map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
+  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
   })), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
   }, "Location", /*#__PURE__*/_react.default.createElement("select", {
     onChange: handleChange
-  }, apartment.map(stay => {
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: "--Add an apartment--"
+  }, "--Add an apartment--"), _stays.default.map(stay => {
     return /*#__PURE__*/_react.default.createElement("option", {
       value: stay.city,
       key: stay.id
@@ -28621,7 +28625,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64512" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51732" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
