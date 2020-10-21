@@ -30,7 +30,7 @@ function App() {
         console.log('yes');
         let increment = []
         setAdultNumber(prevCount => prevCount + 1);
-        increment = stays.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+        increment = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
             console.log("name", increment);
             setApartment(increment);
             return apartment;
@@ -40,7 +40,7 @@ function App() {
         let decrement = []
         console.log('yes');
         setAdultNumber(prevCount => prevCount - 1);
-        decrement = stays.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+        decrement = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
         console.log("name", decrement);
         setApartment(decrement);
         return apartment;
@@ -50,7 +50,7 @@ function App() {
         console.log('yes');
         let increment = []
         setChildrenNumber(prevCount => prevCount + 1);
-        increment = stays.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+        increment = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
             console.log("name", increment);
             setApartment(increment);
             return apartment;
@@ -60,7 +60,7 @@ function App() {
         let decrement = []
         console.log('yes');
         setChildrenNumber(prevCount => prevCount - 1);
-        decrement = stays.filter(stay => stay.maxGuests === adultNumber + childrenNumber);
+        decrement = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
         console.log("name", decrement);
         setApartment(decrement);
         return apartment;
