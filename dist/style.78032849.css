@@ -347,4 +347,16 @@ footer a {
     cursor: pointer;
 }
 
+.remove-modal {
+    background-image: url("/clear.bc146587.svg");
+    background-size: 13px;
+    background-position: center;
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    padding: 18px;
+}
+
 /*# sourceMappingURL=/style.78032849.css.map */

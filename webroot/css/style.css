@@ -346,3 +346,15 @@ footer a {
     text-indent: -9999px;
     cursor: pointer;
 }
+
+.remove-modal {
+    background-image: url("../images/clear.svg");
+    background-size: 13px;
+    background-position: center;
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    padding: 18px;
+}

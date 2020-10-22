@@ -113,7 +113,7 @@ function App() {
                         </div>
                         <div className="search-container">
                             <label htmlFor="">Guests</label>
-                            <input type="text" className="number-of-guests" placeholder="Add guests" defaultValue={adultNumber + childrenNumber}/>
+                            <input type="text" className="number-of-guests" placeholder="Add guests" defaultValue={adultNumber}/>
                         </div>
                         <div className="guests-to-host">
                             <h3>Adults</h3>
