@@ -28317,16 +28317,6 @@ module.exports = [{
   "beds": 6,
   "photo": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
 }, {
-  "city": "Helsinki",
-  "country": "Finland",
-  "superHost": false,
-  "title": "Apartment next to market spuare",
-  "rating": 4.48,
-  "maxGuests": 3,
-  "type": "Entire apartment",
-  "beds": null,
-  "photo": "https://images.unsplash.com/photo-1556020685-ae41abfc9365?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-}, {
   "city": "Turku",
   "country": "Finland",
   "superHost": true,
@@ -28426,6 +28416,16 @@ module.exports = [{
   "type": "Entire apartment",
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
+}, {
+  "city": "Helsinki",
+  "country": "Finland",
+  "superHost": false,
+  "title": "Apartment next to market spuare",
+  "rating": 4.48,
+  "maxGuests": 3,
+  "type": "Entire apartment",
+  "beds": null,
+  "photo": "https://images.unsplash.com/photo-1556020685-ae41abfc9365?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
 }];
 },{}],"js/Stay.js":[function(require,module,exports) {
 "use strict";
@@ -28659,10 +28659,12 @@ function App() {
     className: "heading"
   }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-stays"
-  }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
+  }, "12+ stays"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-container"
+  }, apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: showModal ? "open" : "close"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal"

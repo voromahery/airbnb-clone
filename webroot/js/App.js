@@ -88,10 +88,11 @@ function App() {
                     <span className="number-of-stays">12+ stays</span>
                 </div>
             </div>
-
+            <div className="card-container">
             {apartment.map(stay =>
                 <Stay key={stay.id} stay={stay} />
             )}
+            </div>
             <div className={showModal?"open":"close"} >
                 <div className="modal">
                     <div className="modal-header">
