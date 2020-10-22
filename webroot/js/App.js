@@ -10,6 +10,7 @@ function App() {
     const [apartment, setApartment] = useState(stays);
     const [adultNumber, setAdultNumber] = useState(0);
     const [childrenNumber, setChildrenNumber] = useState(0);
+    const [showModal, setShowModal] = useState(false);
 
     // Adding different id to each object
     const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
@@ -49,7 +50,6 @@ function App() {
 
     const incrementChildren = () => {
         console.log('yes');
-        let increment = []
         setChildrenNumber(prevCount => prevCount + 1);
         filteredByguestNumber()
     }
@@ -60,6 +60,15 @@ function App() {
         filteredByguestNumber();
     }
 
+    const hide = () => {
+        setShowModal(false);
+    }
+
+    const show = () => {
+        setShowModal(true)
+    }
+
+    //////////////////////////// MODAL //////////////////////////////////
     return (
         <>
             <div>
@@ -71,7 +80,7 @@ function App() {
                         <label htmlFor="search"></label>
                         <input type="text" name="search-place" id="search" className="search" defaultValue={`${stays[0].city}, ${stays[0].country}`} />
                         <input type="text" name="add-guest" id="addGuest" className="add-guest" placeholder="Add guest" />
-                        <button className="search-button">Search</button>
+                        <button type="button" className="search-button" onClick={show}>Search</button>
                     </form>
                 </header>
                 <div className="stay-details">
@@ -83,11 +92,11 @@ function App() {
             {apartment.map(stay =>
                 <Stay key={stay.id} stay={stay} />
             )}
-            <div className="outer-modal">
+            <div className={showModal?"open":"close"} >
                 <div className="modal">
                     <div className="modal-header">
                         <p className="modal-title">Edit your search</p>
-                        <button className="remove-modal">x</button>
+                        <button className="remove-modal" onClick={hide}>x</button>
                     </div>
                     <form>
                         <div className="search-container">
@@ -104,7 +113,7 @@ function App() {
                         </div>
                         <div className="search-container">
                             <label htmlFor="">Guests</label>
-                            <input type="text" className="number-of-guests" placeholder="Add guests" />
+                            <input type="text" className="number-of-guests" placeholder="Add guests" defaultValue={adultNumber + childrenNumber}/>
                         </div>
                         <div className="guests-to-host">
                             <h3>Adults</h3>

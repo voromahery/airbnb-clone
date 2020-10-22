@@ -240,23 +240,40 @@ footer a {
     left: 29px;
 }
 
-.outer-modal {
+/* .outer-modal {
     height: 100vh;
     background-color: rgba(79, 79, 79, 0.4);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    display: none;
+} */
+
+.open,
+.close {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
+
+.close {
+    display: none;  
+} 
+
+.open {
+    display: block;
+    background-color: rgba(79, 79, 79, 0.4);
+} 
 
 .modal {
     font-size: 14px;
-    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
     background-color: #FFFFFF;
-    height: 632px;
 }
 
 .search-container label {

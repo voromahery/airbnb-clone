@@ -28550,7 +28550,8 @@ _stays.default.length = 6;
 function App() {
   const [apartment, setApartment] = (0, _react.useState)(_stays.default);
   const [adultNumber, setAdultNumber] = (0, _react.useState)(0);
-  const [childrenNumber, setChildrenNumber] = (0, _react.useState)(0); // Adding different id to each object
+  const [childrenNumber, setChildrenNumber] = (0, _react.useState)(0);
+  const [showModal, setShowModal] = (0, _react.useState)(false); // Adding different id to each object
 
   const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -28590,7 +28591,6 @@ function App() {
 
   const incrementChildren = () => {
     console.log('yes');
-    let increment = [];
     setChildrenNumber(prevCount => prevCount + 1);
     filteredByguestNumber();
   };
@@ -28600,6 +28600,15 @@ function App() {
     setChildrenNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
   };
+
+  const hide = () => {
+    setShowModal(false);
+  };
+
+  const show = () => {
+    setShowModal(true);
+  }; //////////////////////////// MODAL //////////////////////////////////
+
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
     className: "header"
@@ -28625,7 +28634,9 @@ function App() {
     className: "add-guest",
     placeholder: "Add guest"
   }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "search-button"
+    type: "button",
+    className: "search-button",
+    onClick: show
   }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "stay-details"
   }, /*#__PURE__*/_react.default.createElement("h2", {
@@ -28636,7 +28647,7 @@ function App() {
     key: stay.id,
     stay: stay
   })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "outer-modal"
+    className: showModal ? "open" : "close"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28644,7 +28655,8 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "modal-title"
   }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
-    className: "remove-modal"
+    className: "remove-modal",
+    onClick: hide
   }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("label", {
@@ -28666,7 +28678,8 @@ function App() {
   }, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     className: "number-of-guests",
-    placeholder: "Add guests"
+    placeholder: "Add guests",
+    defaultValue: adultNumber + childrenNumber
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "guests-to-host"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
