@@ -26,46 +26,39 @@ function App() {
         }
     }
 
+    const filteredByguestNumber = () => {
+        let increment = [];
+        increment = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
+        console.log("name", increment);
+        setApartment(increment);
+        return apartment;
+    }
+
     const increment = () => {
         console.log('yes');
-        let increment = []
         setAdultNumber(prevCount => prevCount + 1);
-        increment = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-            console.log("name", increment);
-            setApartment(increment);
-            return apartment;
+        filteredByguestNumber();
     }
 
     const decrement = () => {
         let decrement = []
         console.log('yes');
         setAdultNumber(prevCount => prevCount - 1);
-        decrement = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-        console.log("name", decrement);
-        setApartment(decrement);
-        return apartment;
+        filteredByguestNumber();
     }
 
     const incrementChildren = () => {
         console.log('yes');
         let increment = []
         setChildrenNumber(prevCount => prevCount + 1);
-        increment = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-            console.log("name", increment);
-            setApartment(increment);
-            return apartment;
+        filteredByguestNumber()
     }
 
     const decrementChildren = () => {
-        let decrement = []
         console.log('yes');
         setChildrenNumber(prevCount => prevCount - 1);
-        decrement = stays.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-        console.log("name", decrement);
-        setApartment(decrement);
-        return apartment;
+        filteredByguestNumber();
     }
-
 
     return (
         <>
@@ -90,45 +83,43 @@ function App() {
             {apartment.map(stay =>
                 <Stay key={stay.id} stay={stay} />
             )}
+            <div className="outer-modal">
+                <div className="modal">
+                    <div className="modal-header">
+                        <p className="modal-title">Edit your search</p>
+                        <button className="remove-modal">x</button>
+                    </div>
+                    <form>
+                        <div className="search-container">
+                            <label htmlFor="">Location</label>
+                            <select onChange={handleChange} className="city-to-stay">
+                                <option value={stays[0].city}>{stays[0].city},{stays[0].country}</option>
 
-            <div>
-                <div className="modal-header">
-                    <p className="modal-title">Edit your search</p>
-                    <button className="remove-modal">x</button>
+                                {stays.map(stay => {
+                                    return (
+                                        <option value={stay.city} key={stay.id}>{stay.city}, {stay.country}</option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+                        <div className="search-container">
+                            <label htmlFor="">Guests</label>
+                            <input type="text" className="number-of-guests" placeholder="Add guests" />
+                        </div>
+                        <div className="guests-to-host">
+                            <h3>Adults</h3>
+                            <label>Age 13 or above</label>
+                            <button type="button" onClick={increment} className="add">Add</button> <b>{adultNumber}</b> <button type="button" onClick={decrement} className="minus">Minus</button>
+                        </div>
+                        <div className="guests-to-host">
+                            <h3>children</h3>
+                            <label>Age 2-12</label>
+                            <button type="button" onClick={incrementChildren} className="add">Add</button> <b>{childrenNumber}</b> <button type="button" onClick={decrementChildren} className="minus">Minus</button>
+                        </div>
+                        <button className="modal-search-button">Search</button>
+                    </form>
                 </div>
-                <form>
-                    <div className="search-container">
-                        <label htmlFor="">Location</label>
-                        <select onChange={handleChange} className="city-to-stay">
-                            <option value={stays[0].city}>{stays[0].city},{stays[0].country}</option>
-
-                            {stays.map(stay => {
-                                return (
-                                    <option value={stay.city} key={stay.id}>{stay.city}, {stay.country}</option>
-                                )
-                            })}
-                        </select>
-                    </div>
-                    <div className="search-container">
-                        <label htmlFor="">Guests</label>
-                        <input type="text" className="number-of-guests" placeholder="Add guests" />
-                    </div>
-                    <div>
-                        <h3>Adults</h3>
-                        <label>Age 13 or above
-                            <button type="button" onClick={increment}>+</button> {adultNumber} <button type="button" onClick={decrement}>-</button>
-                        </label>
-                    </div>
-                    <div>
-                        <h3>children</h3>
-                        <label>Age 2-12
-                            <button type="button" onClick={incrementChildren}>+</button> {childrenNumber} <button type="button" onClick={decrementChildren}>-</button>
-                        </label>
-                    </div>
-                    <button className="modal-search-button">Search</button>
-                </form>
             </div>
-
         </>
     )
 }

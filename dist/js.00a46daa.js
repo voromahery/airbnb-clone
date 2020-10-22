@@ -28477,12 +28477,50 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function SearchModal({
-  stay
-}) {
-  return /*#__PURE__*/React.createElement("div", {
-    class: "search-modal"
-  }, /*#__PURE__*/React.createElement("span", null, stay.city));
+function SearchModal() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "modal-title"
+  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "remove-modal"
+  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: ""
+  }, "Location"), /*#__PURE__*/_react.default.createElement("select", {
+    onChange: handleChange,
+    className: "city-to-stay"
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: stays[0].city
+  }, stays[0].city, ",", stays[0].country), stays.map(stay => {
+    return /*#__PURE__*/_react.default.createElement("option", {
+      value: stay.city,
+      key: stay.id
+    }, stay.city, ", ", stay.country);
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: ""
+  }, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    className: "number-of-guests",
+    placeholder: "Add guests"
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: increment
+  }, "+"), " ", adultNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: decrement
+  }, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: incrementChildren
+  }, "+"), " ", childrenNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: decrementChildren
+  }, "-"))), /*#__PURE__*/_react.default.createElement("button", {
+    className: "modal-search-button"
+  }, "Search")));
 }
 },{"react":"../node_modules/react/index.js"}],"js/App.js":[function(require,module,exports) {
 "use strict";
@@ -28529,44 +28567,38 @@ function App() {
     }
   };
 
-  const increment = () => {
-    console.log('yes');
+  const filteredByguestNumber = () => {
     let increment = [];
-    setAdultNumber(prevCount => prevCount + 1);
     increment = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
     console.log("name", increment);
     setApartment(increment);
     return apartment;
+  };
+
+  const increment = () => {
+    console.log('yes');
+    setAdultNumber(prevCount => prevCount + 1);
+    filteredByguestNumber();
   };
 
   const decrement = () => {
     let decrement = [];
     console.log('yes');
     setAdultNumber(prevCount => prevCount - 1);
-    decrement = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-    console.log("name", decrement);
-    setApartment(decrement);
-    return apartment;
+    filteredByguestNumber();
   };
 
   const incrementChildren = () => {
     console.log('yes');
     let increment = [];
     setChildrenNumber(prevCount => prevCount + 1);
-    increment = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-    console.log("name", increment);
-    setApartment(increment);
-    return apartment;
+    filteredByguestNumber();
   };
 
   const decrementChildren = () => {
-    let decrement = [];
     console.log('yes');
     setChildrenNumber(prevCount => prevCount - 1);
-    decrement = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
-    console.log("name", decrement);
-    setApartment(decrement);
-    return apartment;
+    filteredByguestNumber();
   };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
@@ -28603,7 +28635,11 @@ function App() {
   }, "12+ stays"))), apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "outer-modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-header"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "modal-title"
@@ -28631,21 +28667,29 @@ function App() {
     type: "text",
     className: "number-of-guests",
     placeholder: "Add guests"
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above", /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "guests-to-host"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: increment
-  }, "+"), " ", adultNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    onClick: increment,
+    className: "add"
+  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, adultNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: decrement
-  }, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12", /*#__PURE__*/_react.default.createElement("button", {
+    onClick: decrement,
+    className: "minus"
+  }, "Minus")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "guests-to-host"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: incrementChildren
-  }, "+"), " ", childrenNumber, " ", /*#__PURE__*/_react.default.createElement("button", {
+    onClick: incrementChildren,
+    className: "add"
+  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, childrenNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: decrementChildren
-  }, "-"))), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: decrementChildren,
+    className: "minus"
+  }, "Minus")), /*#__PURE__*/_react.default.createElement("button", {
     className: "modal-search-button"
-  }, "Search"))));
+  }, "Search")))));
 }
 
 var _default = App;
@@ -28690,7 +28734,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60166" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52256" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
