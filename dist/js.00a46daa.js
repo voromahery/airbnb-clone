@@ -28513,7 +28513,8 @@ function SearchModal(props) {
     type: "text",
     className: "number-of-guests",
     placeholder: "Add guests",
-    defaultValue: props.adultNumber
+    value: props.adultNumber + props.childrenNumber,
+    onChange: e => e.target.value
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "guests-to-host"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
@@ -28572,6 +28573,7 @@ function App() {
   const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
   const handleChange = e => {
+    e.preventDefault();
     const form = e.currentTarget;
     const data = form.value;
 
@@ -28586,7 +28588,7 @@ function App() {
 
   const filteredByguestNumber = () => {
     let increment = [];
-    increment = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests > adultNumber === childrenNumber);
+    increment = _stays.default.filter(stay => stay.maxGuests > adultNumber + childrenNumber || stay.maxGuests === adultNumber + childrenNumber);
     console.log("name", increment);
     setApartment(increment);
     return apartment;
@@ -28599,7 +28601,6 @@ function App() {
   };
 
   const decrement = () => {
-    let decrement = [];
     console.log('yes');
     setAdultNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
@@ -28664,63 +28665,17 @@ function App() {
   }, apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  }))), /*#__PURE__*/_react.default.createElement("div", {
-    className: showModal ? "open" : "close"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-header"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "modal-title"
-  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
-    className: "remove-modal",
-    onClick: hide
-  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("select", {
-    onChange: handleChange,
-    className: "city-to-stay"
-  }, /*#__PURE__*/_react.default.createElement("option", {
-    value: _stays.default[0].city
-  }, _stays.default[0].city, ",", _stays.default[0].country), _stays.default.map(stay => {
-    return /*#__PURE__*/_react.default.createElement("option", {
-      value: stay.city,
-      key: stay.id
-    }, stay.city, ", ", stay.country);
-  }))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: ""
-  }, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    className: "number-of-guests",
-    placeholder: "Add guests",
-    defaultValue: adultNumber
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "guests-to-host"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: increment,
-    className: "add"
-  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, adultNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: decrement,
-    className: "minus"
-  }, "Minus")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "guests-to-host"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: incrementChildren,
-    className: "add"
-  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, childrenNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: decrementChildren,
-    className: "minus"
-  }, "Minus")), /*#__PURE__*/_react.default.createElement("button", {
-    className: "modal-search-button"
-  }, "Search")))));
+  }))), /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
+    showModal: showModal,
+    handleChange: handleChange,
+    decrement: decrement,
+    increment: increment,
+    decrementChildren: decrementChildren,
+    incrementChildren: incrementChildren,
+    hide: hide,
+    adultNumber: adultNumber,
+    childrenNumber: childrenNumber
+  }));
 }
 
 var _default = App;
@@ -28765,7 +28720,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58661" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49677" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
