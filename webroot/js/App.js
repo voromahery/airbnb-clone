@@ -77,9 +77,8 @@ function App() {
                         <a href="/" className="page-title-link">Windbnb</a>
                     </h1>
                     <form className="search-form">
-                        <label htmlFor="search"></label>
-                        <input type="text" name="search-place" id="search" className="search" defaultValue={`${stays[0].city}, ${stays[0].country}`} />
-                        <input type="text" name="add-guest" id="addGuest" className="add-guest" placeholder="Add guest" />
+                        <button type="button" className="search" onClick={show}>{`${stays[0].city}, ${stays[0].country}`}</button>
+                        <button type="button" id="addGuest" className="add-guest" onClick={show}>Add guest</button>
                         <button type="button" className="search-button" onClick={show}>Search</button>
                     </form>
                 </header>

@@ -2,6 +2,13 @@ import React from 'react';
 import stays from '../../stays.json'
 
 export default function SearchModal(props) {
+    let guest = "";
+    if (props.adultNumber + props.childrenNumber <= 1) {
+        guest = `${props.adultNumber + props.childrenNumber} guest`
+    }
+    if (props.adultNumber + props.childrenNumber > 1) {
+        guest = `${props.adultNumber + props.childrenNumber} guests`
+    }
     return (
         <div className={props.showModal ? "open" : "close"} >
             <div className="modal">
@@ -24,7 +31,7 @@ export default function SearchModal(props) {
                     </div>
                     <div className="search-container">
                         <label htmlFor="">Guests</label>
-                        <input type="text" className="number-of-guests" placeholder="Add guests" value={props.adultNumber + props.childrenNumber} onChange={(e) => e.target.value} />
+                        <input type="text" className="number-of-guests" placeholder="Add guests" value={guest} onChange={(e) => e.target.value} />
                     </div>
                     <div className="guests-to-host">
                         <h3>Adults</h3>

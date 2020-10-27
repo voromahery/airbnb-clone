@@ -28480,6 +28480,16 @@ var _stays = _interopRequireDefault(require("../../stays.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function SearchModal(props) {
+  let guest = "";
+
+  if (props.adultNumber + props.childrenNumber <= 1) {
+    guest = `${props.adultNumber + props.childrenNumber} guest`;
+  }
+
+  if (props.adultNumber + props.childrenNumber > 1) {
+    guest = `${props.adultNumber + props.childrenNumber} guests`;
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: props.showModal ? "open" : "close"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28513,7 +28523,7 @@ function SearchModal(props) {
     type: "text",
     className: "number-of-guests",
     placeholder: "Add guests",
-    value: props.adultNumber + props.childrenNumber,
+    value: guest,
     onChange: e => e.target.value
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "guests-to-host"
@@ -28636,21 +28646,16 @@ function App() {
     className: "page-title-link"
   }, "Windbnb")), /*#__PURE__*/_react.default.createElement("form", {
     className: "search-form"
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "search"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "search-place",
-    id: "search",
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     className: "search",
-    defaultValue: `${_stays.default[0].city}, ${_stays.default[0].country}`
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "add-guest",
+    onClick: show
+  }, `${_stays.default[0].city}, ${_stays.default[0].country}`), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     id: "addGuest",
     className: "add-guest",
-    placeholder: "Add guest"
-  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: show
+  }, "Add guest"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "search-button",
     onClick: show
@@ -28720,7 +28725,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49677" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
