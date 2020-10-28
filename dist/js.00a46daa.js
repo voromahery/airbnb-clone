@@ -28473,14 +28473,69 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = SearchModal;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _stays = _interopRequireDefault(require("../../stays.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function SearchModal(props) {
+  let modalDetails = "";
+
+  const numberOfGuests = /*#__PURE__*/_react.default.createElement("div", {
+    className: "guest-modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "guests-to-host adults"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("p", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "counters"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.increment,
+    className: "add"
+  }, "Add"), /*#__PURE__*/_react.default.createElement("b", null, props.adultNumber), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrement,
+    className: "minus"
+  }, "Minus"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "guests-to-host children"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("p", null, "Age 2-12"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "counters"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.incrementChildren,
+    className: "add"
+  }, "Add"), /*#__PURE__*/_react.default.createElement("b", null, props.childrenNumber), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrementChildren,
+    className: "minus"
+  }, "Minus"))));
+
+  const cityName = /*#__PURE__*/_react.default.createElement("ul", null, props.apartment.map(stay => /*#__PURE__*/_react.default.createElement("li", {
+    className: "city-name",
+    key: stay.id
+  }, stay.city, ", ", stay.country)));
+
+  function modalFunction(e) {
+    if (e.target.name === "cityToStay") {
+      modalDetails = cityName;
+      console.log(modalDetails);
+    }
+
+    if (e.target.name === "guests") {
+      modalDetails = numberOfGuests;
+      console.log(modalDetails);
+    }
+  }
+
   let guest = "";
+
+  if (props.adultNumber + props.childrenNumber <= 0) {
+    guest = "Add guest";
+  }
 
   if (props.adultNumber + props.childrenNumber <= 1) {
     guest = `${props.adultNumber + props.childrenNumber} guest`;
@@ -28491,7 +28546,7 @@ function SearchModal(props) {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: props.showModal ? "open" : "close"
+    className: "open"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28500,52 +28555,25 @@ function SearchModal(props) {
     className: "modal-title"
   }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
     className: "remove-modal",
-    onClick: props.hide
+    onClick: () => props.setIsShown(!props.isShown)
   }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("select", {
-    onChange: props.handleChange,
-    className: "city-to-stay"
-  }, /*#__PURE__*/_react.default.createElement("option", {
-    value: _stays.default[0].city
-  }, _stays.default[0].city, ",", _stays.default[0].country), _stays.default.map(stay => {
-    return /*#__PURE__*/_react.default.createElement("option", {
-      value: stay.city,
-      key: stay.id
-    }, stay.city, ", ", stay.country);
-  }))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: ""
-  }, "Guests"), /*#__PURE__*/_react.default.createElement("input", {
+  }, "Location"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    className: "number-of-guests",
-    placeholder: "Add guests",
-    value: guest,
-    onChange: e => e.target.value
+    className: "city-to-stay",
+    name: "cityToStay",
+    onChange: props.handleChange,
+    onClick: modalFunction
   })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "guests-to-host"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "Adults"), /*#__PURE__*/_react.default.createElement("label", null, "Age 13 or above"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: props.increment,
-    className: "add"
-  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, props.adultNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: props.decrement,
-    className: "minus"
-  }, "Minus")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "guests-to-host"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, "children"), /*#__PURE__*/_react.default.createElement("label", null, "Age 2-12"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: props.incrementChildren,
-    className: "add"
-  }, "Add"), " ", /*#__PURE__*/_react.default.createElement("b", null, props.childrenNumber), " ", /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: props.decrementChildren,
-    className: "minus"
-  }, "Minus")), /*#__PURE__*/_react.default.createElement("button", {
+    name: "guests",
+    className: "number-of-guests",
+    onClick: modalFunction
+  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), guest)), /*#__PURE__*/_react.default.createElement("div", null, cityName), /*#__PURE__*/_react.default.createElement("button", {
     className: "modal-search-button"
   }, "Search"))));
 }
@@ -28578,7 +28606,7 @@ function App() {
   const [apartment, setApartment] = (0, _react.useState)(_stays.default);
   const [adultNumber, setAdultNumber] = (0, _react.useState)(0);
   const [childrenNumber, setChildrenNumber] = (0, _react.useState)(0);
-  const [showModal, setShowModal] = (0, _react.useState)(false); // Adding different id to each object
+  const [isShown, setIsShown] = (0, _react.useState)(false); // Adding different id to each object
 
   const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -28605,35 +28633,23 @@ function App() {
   };
 
   const increment = () => {
-    console.log('yes');
     setAdultNumber(prevCount => prevCount + 1);
     filteredByguestNumber();
   };
 
   const decrement = () => {
-    console.log('yes');
     setAdultNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
   };
 
   const incrementChildren = () => {
-    console.log('yes');
     setChildrenNumber(prevCount => prevCount + 1);
     filteredByguestNumber();
   };
 
   const decrementChildren = () => {
-    console.log('yes');
     setChildrenNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
-  };
-
-  const hide = () => {
-    setShowModal(false);
-  };
-
-  const show = () => {
-    setShowModal(true);
   }; //////////////////////////// MODAL //////////////////////////////////
 
 
@@ -28649,38 +28665,39 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "search",
-    onClick: show
+    onClick: () => setIsShown(!isShown)
   }, `${_stays.default[0].city}, ${_stays.default[0].country}`), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     id: "addGuest",
     className: "add-guest",
-    onClick: show
+    onClick: () => setIsShown(!isShown)
   }, "Add guest"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "search-button",
-    onClick: show
+    onClick: () => setIsShown(!isShown)
   }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "stay-details"
   }, /*#__PURE__*/_react.default.createElement("h2", {
     className: "heading"
   }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
     className: "number-of-stays"
-  }, "12+ stays"))), /*#__PURE__*/_react.default.createElement("div", {
+  }, apartment.length, "+ stays"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "card-container"
   }, apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  }))), /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
-    showModal: showModal,
+  }))), isShown ? /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
+    apartment: apartment,
     handleChange: handleChange,
     decrement: decrement,
     increment: increment,
     decrementChildren: decrementChildren,
     incrementChildren: incrementChildren,
-    hide: hide,
     adultNumber: adultNumber,
-    childrenNumber: childrenNumber
-  }));
+    childrenNumber: childrenNumber,
+    isShown: isShown,
+    setIsShown: setIsShown
+  }) : null);
 }
 
 var _default = App;
@@ -28725,7 +28742,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50095" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49786" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

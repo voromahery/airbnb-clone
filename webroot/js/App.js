@@ -10,8 +10,7 @@ function App() {
     const [apartment, setApartment] = useState(stays);
     const [adultNumber, setAdultNumber] = useState(0);
     const [childrenNumber, setChildrenNumber] = useState(0);
-    const [showModal, setShowModal] = useState(false);
-
+    const [isShown, setIsShown] = useState(false);
     // Adding different id to each object
     const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -37,35 +36,23 @@ function App() {
     }
 
     const increment = () => {
-        console.log('yes');
         setAdultNumber(prevCount => prevCount + 1);
         filteredByguestNumber();
     }
 
     const decrement = () => {
-        console.log('yes');
         setAdultNumber(prevCount => prevCount - 1);
         filteredByguestNumber();
     }
 
     const incrementChildren = () => {
-        console.log('yes');
         setChildrenNumber(prevCount => prevCount + 1);
         filteredByguestNumber()
     }
 
     const decrementChildren = () => {
-        console.log('yes');
         setChildrenNumber(prevCount => prevCount - 1);
         filteredByguestNumber();
-    }
-
-    const hide = () => {
-        setShowModal(false);
-    }
-
-    const show = () => {
-        setShowModal(true)
     }
 
     //////////////////////////// MODAL //////////////////////////////////
@@ -77,14 +64,14 @@ function App() {
                         <a href="/" className="page-title-link">Windbnb</a>
                     </h1>
                     <form className="search-form">
-                        <button type="button" className="search" onClick={show}>{`${stays[0].city}, ${stays[0].country}`}</button>
-                        <button type="button" id="addGuest" className="add-guest" onClick={show}>Add guest</button>
-                        <button type="button" className="search-button" onClick={show}>Search</button>
+                        <button type="button" className="search" onClick={() => setIsShown(!isShown)}>{`${stays[0].city}, ${stays[0].country}`}</button>
+                        <button type="button" id="addGuest" className="add-guest" onClick={() => setIsShown(!isShown)}>Add guest</button>
+                        <button type="button" className="search-button" onClick={() => setIsShown(!isShown)}>Search</button>
                     </form>
                 </header>
                 <div className="stay-details">
                     <h2 className="heading">Stay in Finland</h2>
-                    <span className="number-of-stays">12+ stays</span>
+                    <span className="number-of-stays">{apartment.length}+ stays</span>
                 </div>
             </div>
             <div className="card-container">
@@ -92,17 +79,20 @@ function App() {
                     <Stay key={stay.id} stay={stay} />
                 )}
             </div>
-            <SearchModal
-                showModal={showModal}
-                handleChange={handleChange}
-                decrement={decrement}
-                increment={increment}
-                decrementChildren={decrementChildren}
-                incrementChildren={incrementChildren}
-                hide={hide}
-                adultNumber={adultNumber}
-                childrenNumber={childrenNumber}
-            />
+            {isShown ?
+                <SearchModal
+                    apartment={apartment}
+                    handleChange={handleChange}
+                    decrement={decrement}
+                    increment={increment}
+                    decrementChildren={decrementChildren}
+                    incrementChildren={incrementChildren}
+                    adultNumber={adultNumber}
+                    childrenNumber={childrenNumber}
+                    isShown={isShown}
+                    setIsShown={setIsShown}
+                />:null
+            }
         </>
     )
 }

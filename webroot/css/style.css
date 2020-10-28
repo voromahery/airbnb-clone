@@ -55,6 +55,17 @@ body {
     font-family: 'danFont',Arial, Helvetica, sans-serif;
 }
 
+main {
+    max-width: 1440px;
+    margin: auto;
+}
+ 
+.modal,
+main {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
 .search,
 .modal {
     font-family: 'danMulish', Arial, Helvetica, sans-serif;
@@ -111,7 +122,6 @@ img {
     border-bottom-right-radius: 0;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
-    max-width: 137px;
     padding-left: 16px;
 }
 
@@ -121,12 +131,12 @@ img {
     text-align: center;
     border-right: 1px solid #F2F2F2;
     border-left: 1px solid #F2F2F2;
-    max-width: 106px;
 }
 
 .search-button,
 .search,
-.add-guest {
+.add-guest,
+.number-of-guests {
     background-color: #FFFFFF;
 }
 
@@ -245,13 +255,15 @@ footer a {
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
     border-bottom: 1px solid #F2F2F2;
-    max-width: 355px;
+    /* max-width: 355px; */
 }
 
 .number-of-guests {
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
-    max-width: 351px;
+    text-align: start;
+    padding-left: 1rem;
+    /* max-width: 351px; */
 }
 
 .search-container {
@@ -282,9 +294,9 @@ footer a {
     right: 0;
 }
 
-.close {
+/* .close {
     display: none;  
-} 
+}  */
 
 .open {
     display: block;
@@ -297,6 +309,7 @@ footer a {
     left: 0;
     right: 0;
     background-color: #FFFFFF;
+    padding: 16px;
 }
 
 .search-container label {
@@ -344,9 +357,20 @@ footer a {
     align-items: center;
 }
 
-.guests-to-host label {
+.guests-to-host {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.guests-to-host b {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.guests-to-host p {
     color: #BDBDBD;
 }
+
 .guests-to-host button {
     background-color: #FFFFFF;
     border: 1px solid #828282;
@@ -372,9 +396,28 @@ footer a {
     background-image: url("../images/clear.svg");
     border: none;
     background-color: #FFFFFF;
-    padding: 18px;
+    background-size: cover;
+    width: 28px;
 }
 
+.modal ul {
+    list-style: none;
+}
+
+.city-name {
+    padding: 10px;
+}
+
+.city-name::before {
+    content: "";
+    background-image: url("../images/location.svg");
+    width: 14px;
+    height: 19px;
+    padding-right: 20px;
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
 
 @media (min-width: 650px) {
 
@@ -386,11 +429,8 @@ footer a {
 
 }
 
-@media (min-width: 900px) {
 
-    /* img {
-        max-width: 395px;
-    } */
+@media (min-width: 900px) {
 
     .header {
         padding-top: 32px;
@@ -406,8 +446,6 @@ footer a {
     }
 
     main {
-        max-width: 1440px;
-        margin: auto;
         padding-bottom: 98px;
         padding-left: 94px;
         padding-right: 94px;
@@ -428,12 +466,16 @@ footer a {
         max-width: 297px;
     }
 
-    .card-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     footer {
         max-width: 402px;
         margin: auto;
+    }
+
+}
+
+
+@media (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
