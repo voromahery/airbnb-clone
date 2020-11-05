@@ -28465,28 +28465,46 @@ function Stay({
     className: "title"
   }, stay.title)));
 }
-},{"react":"../node_modules/react/index.js"}],"js/SearchModal.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"js/NumberOfGuest.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = SearchModal;
+exports.default = NumberOfGuest;
 
-var _react = _interopRequireWildcard(require("react"));
-
-var _stays = _interopRequireDefault(require("../../stays.json"));
+var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function SearchModal(props) {
-  let modalDetails = "";
-
-  const numberOfGuests = /*#__PURE__*/_react.default.createElement("div", {
+function NumberOfGuest(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "outer-modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "modal-title"
+  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "remove-modal",
+    onClick: () => props.setIsShownGuest(!props.isShownGuest)
+  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: ""
+  }, "Location"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    className: "city-to-stay",
+    name: "cityToStay",
+    onChange: props.handleChange
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    name: "guests",
+    className: "number-of-guests"
+  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), props.guest)), /*#__PURE__*/_react.default.createElement("div", {
     className: "guest-modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "guests-to-host adults"
@@ -28512,41 +28530,36 @@ function SearchModal(props) {
     type: "button",
     onClick: props.decrementChildren,
     className: "minus"
-  }, "Minus"))));
+  }, "Minus")))), ";", /*#__PURE__*/_react.default.createElement("button", {
+    className: "modal-search-button"
+  }, "Search"))));
+}
+},{"react":"../node_modules/react/index.js"}],"js/PlaceNameModal.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SearchPlace;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _stays = _interopRequireDefault(require("../../stays.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function SearchPlace(props) {
   const cityName = /*#__PURE__*/_react.default.createElement("ul", null, props.apartment.map(stay => /*#__PURE__*/_react.default.createElement("li", {
     className: "city-name",
     key: stay.id
   }, stay.city, ", ", stay.country)));
 
-  function modalFunction(e) {
-    if (e.target.name === "cityToStay") {
-      modalDetails = cityName;
-      console.log(modalDetails);
-    }
-
-    if (e.target.name === "guests") {
-      modalDetails = numberOfGuests;
-      console.log(modalDetails);
-    }
-  }
-
-  let guest = "";
-
-  if (props.adultNumber + props.childrenNumber <= 0) {
-    guest = "Add guest";
-  }
-
-  if (props.adultNumber + props.childrenNumber <= 1) {
-    guest = `${props.adultNumber + props.childrenNumber} guest`;
-  }
-
-  if (props.adultNumber + props.childrenNumber > 1) {
-    guest = `${props.adultNumber + props.childrenNumber} guests`;
-  }
-
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "open"
+    className: "outer-modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28555,7 +28568,7 @@ function SearchModal(props) {
     className: "modal-title"
   }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
     className: "remove-modal",
-    onClick: () => props.setIsShown(!props.isShown)
+    onClick: () => props.setIsShownPlace(!props.isShownPlace)
   }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("label", {
@@ -28564,16 +28577,14 @@ function SearchModal(props) {
     type: "text",
     className: "city-to-stay",
     name: "cityToStay",
-    onChange: props.handleChange,
-    onClick: modalFunction
+    onChange: props.handleChange
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     name: "guests",
-    className: "number-of-guests",
-    onClick: modalFunction
-  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), guest)), /*#__PURE__*/_react.default.createElement("div", null, cityName), /*#__PURE__*/_react.default.createElement("button", {
+    className: "number-of-guests"
+  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), props.guest)), /*#__PURE__*/_react.default.createElement("div", null, cityName), /*#__PURE__*/_react.default.createElement("button", {
     className: "modal-search-button"
   }, "Search"))));
 }
@@ -28591,7 +28602,9 @@ var _stays = _interopRequireDefault(require("../../stays.json"));
 
 var _Stay = _interopRequireDefault(require("./Stay.js"));
 
-var _SearchModal = _interopRequireDefault(require("./SearchModal.js"));
+var _NumberOfGuest = _interopRequireDefault(require("./NumberOfGuest"));
+
+var _PlaceNameModal = _interopRequireDefault(require("./PlaceNameModal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28606,7 +28619,8 @@ function App() {
   const [apartment, setApartment] = (0, _react.useState)(_stays.default);
   const [adultNumber, setAdultNumber] = (0, _react.useState)(0);
   const [childrenNumber, setChildrenNumber] = (0, _react.useState)(0);
-  const [isShown, setIsShown] = (0, _react.useState)(false); // Adding different id to each object
+  const [isShownGuest, setIsShownGuest] = (0, _react.useState)(false);
+  const [isShownPlace, setIsShownPlace] = (0, _react.useState)(false); // Adding different id to each object
 
   const stayId = apartment.forEach((stay, index) => stay.id = Date.now() + index);
 
@@ -28632,12 +28646,25 @@ function App() {
     return apartment;
   };
 
+  const showGuest = () => {
+    setIsShownGuest(!isShownGuest);
+  };
+
+  const showPlace = () => {
+    setIsShownPlace(!isShownPlace);
+  }; /////////////////////// NUMBER OF GUEST OPERATION ///////////////////////////////////////////
+
+
   const increment = () => {
     setAdultNumber(prevCount => prevCount + 1);
     filteredByguestNumber();
   };
 
   const decrement = () => {
+    if (adultNumber <= 0) {
+      return;
+    }
+
     setAdultNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
   };
@@ -28648,9 +28675,27 @@ function App() {
   };
 
   const decrementChildren = () => {
+    if (childrenNumber <= 0) {
+      return;
+    }
+
     setChildrenNumber(prevCount => prevCount - 1);
     filteredByguestNumber();
-  }; //////////////////////////// MODAL //////////////////////////////////
+  };
+
+  let guest = "";
+
+  if (adultNumber + childrenNumber <= 0) {
+    guest = "Add guest";
+  }
+
+  if (adultNumber + childrenNumber <= 1) {
+    guest = `${adultNumber + childrenNumber} guest`;
+  }
+
+  if (adultNumber + childrenNumber > 1) {
+    guest = `${adultNumber + childrenNumber} guests`;
+  } //////////////////////////// MODAL //////////////////////////////////
 
 
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
@@ -28665,16 +28710,15 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "search",
-    onClick: () => setIsShown(!isShown)
+    onClick: showPlace
   }, `${_stays.default[0].city}, ${_stays.default[0].country}`), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     id: "addGuest",
     className: "add-guest",
-    onClick: () => setIsShown(!isShown)
+    onClick: showGuest
   }, "Add guest"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "search-button",
-    onClick: () => setIsShown(!isShown)
+    className: "search-button"
   }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "stay-details"
   }, /*#__PURE__*/_react.default.createElement("h2", {
@@ -28686,7 +28730,7 @@ function App() {
   }, apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  }))), isShown ? /*#__PURE__*/_react.default.createElement(_SearchModal.default, {
+  }))), isShownGuest ? /*#__PURE__*/_react.default.createElement(_NumberOfGuest.default, {
     apartment: apartment,
     handleChange: handleChange,
     decrement: decrement,
@@ -28695,14 +28739,25 @@ function App() {
     incrementChildren: incrementChildren,
     adultNumber: adultNumber,
     childrenNumber: childrenNumber,
-    isShown: isShown,
-    setIsShown: setIsShown
+    isShownGuest: isShownGuest,
+    setIsShownGuest: setIsShownGuest,
+    isShownPlace: isShownPlace,
+    setIsShownPlace: setIsShownPlace,
+    guest: guest
+  }) : null, isShownPlace ? /*#__PURE__*/_react.default.createElement(_PlaceNameModal.default, {
+    isShownGuest: isShownGuest,
+    setIsShownGuest: setIsShownGuest,
+    apartment: apartment,
+    handleChange: handleChange,
+    isShownPlace: isShownPlace,
+    setIsShownPlace: setIsShownPlace,
+    guest: guest
   }) : null);
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json","./Stay.js":"js/Stay.js","./SearchModal.js":"js/SearchModal.js"}],"js/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../stays.json":"../stays.json","./Stay.js":"js/Stay.js","./NumberOfGuest":"js/NumberOfGuest.js","./PlaceNameModal":"js/PlaceNameModal.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28742,7 +28797,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49786" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64740" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -285,20 +285,12 @@ footer a {
     display: none;
 } */
 
-.open,
-.close {
+.outer-modal {
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-}
-
-/* .close {
-    display: none;  
-}  */
-
-.open {
     display: block;
     background-color: rgba(79, 79, 79, 0.4);
 } 

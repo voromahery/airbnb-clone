@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import stays from '../../stays.json'
 
-export default function SearchModal(props) {
+export default function SearchPlace(props) {
 
     const cityName =
         <ul>
@@ -12,7 +13,7 @@ export default function SearchModal(props) {
             <div className="modal">
                 <div className="modal-header">
                     <p className="modal-title">Edit your search</p>
-                    <button className="remove-modal" onClick={() => props.setIsShown(!props.isShown)}>x</button>
+                    <button className="remove-modal" onClick={() => props.setIsShownPlace(!props.isShownPlace)}>x</button>
                 </div>
                 <form>
                     <div className="search-container">
@@ -21,7 +22,7 @@ export default function SearchModal(props) {
                     </div>
                     <div className="search-container">
                         <button type="button" name="guests" className="number-of-guests">Guests<br />
-                            {guest}
+                            {props.guest}
                         </button>
                     </div>
                     <div>
