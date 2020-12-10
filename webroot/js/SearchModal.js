@@ -13,7 +13,7 @@ export default function SearchModal(props) {
                 <div className="modal-header">
                     <p className="modal-title">Edit your search</p>
                     <button className="remove-modal" onClick={() => props.setIsShown(!props.isShown)}>x</button>
-                </div>
+                </div>z
                 <form>
                     <div className="search-container">
                         <label htmlFor="">Location</label>

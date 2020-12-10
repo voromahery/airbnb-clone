@@ -38,7 +38,7 @@ export default function NumberOfGuest(props) {
                                 <button type="button" onClick={props.decrementChildren} className="minus">Minus</button>
                             </div>
                         </div>
-                    </div>;
+                    </div>
                     <button className="modal-search-button">Search</button>
                 </form>
             </div>

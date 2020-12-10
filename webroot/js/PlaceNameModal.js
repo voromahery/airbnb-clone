@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import stays from '../../stays.json'
+import React from 'react';
 
 export default function SearchPlace(props) {
 
@@ -21,7 +20,7 @@ export default function SearchPlace(props) {
                         <input type="text" className="city-to-stay" name="cityToStay" onChange={props.handleChange} />
                     </div>
                     <div className="search-container">
-                        <button type="button" name="guests" className="number-of-guests">Guests<br />
+                        <button type="button" name="guests" className="number-of-guests" onClick={() => props.setIsShownGuest(!props.isShownGuest)}>Guests<br />
                             {props.guest}
                         </button>
                     </div>
