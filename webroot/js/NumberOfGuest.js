@@ -1,25 +1,36 @@
-import React from 'react';
-
+import React from "react";
 
 export default function NumberOfGuest(props) {
-    return (
-        <div className="outer-modal">
-            <div className="modal">
-                <div className="modal-header">
-                    <p className="modal-title">Edit your search</p>
-                    <button className="remove-modal" onClick={() => props.setIsShownGuest(!props.isShownGuest)}>x</button>
-                </div>
-                <form>
-                    <div className="search-container">
-                        <label htmlFor="">Location</label>
-                        <input type="text" className="city-to-stay" name="cityToStay" onChange={props.handleChange} />
-                    </div>
-                    <div className="search-container">
-                        <button type="button" name="guests" className="number-of-guests">Guests<br />
-                            {props.guest}
-                        </button>
-                    </div>
-                    <div className="guest-modal">
+  return (
+    <div className="outer-modal">
+      <div className="modal">
+        <div className="modal-header">
+          <p className="modal-title">Edit your search</p>
+          <button
+            className="remove-modal"
+            onClick={() => props.setIsShownGuest(!props.isShownGuest)}
+          >
+            x
+          </button>
+        </div>
+        <form>
+          <div className="search-container">
+            <label htmlFor="">Location</label>
+            <input
+              type="text"
+              className="city-to-stay"
+              name="cityToStay"
+              onChange={props.handleChange}
+            />
+          </div>
+          <div className="search-container">
+            <button type="button" name="guests" className="number-of-guests">
+              Guests
+              <br />
+              {props.guest}
+            </button>
+          </div>
+          {/* <div className="guest-modal">
                         <div className="guests-to-host adults">
                             <h3>Adults</h3>
                             <p>Age 13 or above</p>
@@ -38,10 +49,12 @@ export default function NumberOfGuest(props) {
                                 <button type="button" onClick={props.decrementChildren} className="minus">Minus</button>
                             </div>
                         </div>
-                    </div>
-                    <button className="modal-search-button">Search</button>
-                </form>
-            </div>
-        </div>
-    )
+                    </div> */}
+          <div className="search-icon">
+            <button className="modal-search-button">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
