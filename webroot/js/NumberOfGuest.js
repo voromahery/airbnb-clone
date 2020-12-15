@@ -16,12 +16,12 @@ export default function NumberOfGuest(props) {
         <form>
           <div className="search-container">
             <label htmlFor="">Location</label>
-            <input
-              type="text"
+            <button
+              type="button"
               className="city-to-stay"
               name="cityToStay"
               onChange={props.handleChange}
-            />
+            ></button>
           </div>
           <div className="search-container">
             <button type="button" name="guests" className="number-of-guests">

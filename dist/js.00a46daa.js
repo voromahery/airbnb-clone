@@ -28900,8 +28900,8 @@ function NumberOfGuest(props) {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
+  }, "Location"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
@@ -28946,12 +28946,12 @@ function SearchPlace(props) {
   }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
     className: "remove-modal",
     onClick: () => props.setIsShownPlace(!props.isShownPlace)
-  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "clear")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
+  }, "Location"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
@@ -29177,7 +29177,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50349" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

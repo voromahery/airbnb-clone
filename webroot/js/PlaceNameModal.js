@@ -20,18 +20,18 @@ export default function SearchPlace(props) {
             className="remove-modal"
             onClick={() => props.setIsShownPlace(!props.isShownPlace)}
           >
-            x
+            clear
           </button>
         </div>
         <form>
           <div className="search-container">
             <label htmlFor="">Location</label>
-            <input
-              type="text"
+            <button
+              type="button"
               className="city-to-stay"
               name="cityToStay"
               onChange={props.handleChange}
-            />
+            ></button>
           </div>
           <div className="search-container">
             <button
