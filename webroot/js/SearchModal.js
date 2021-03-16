@@ -40,9 +40,7 @@ export default function SearchModal(props) {
               {guest}
             </button>
           </div>
-          {/* <div>
-                        {cityName}
-                    </div> */}
+          <div>{cityName}</div>
           <button className="modal-search-button">Search</button>
         </form>
       </div>

@@ -23,6 +23,7 @@ export default function SearchPlace(props) {
             clear
           </button>
         </div>
+
         <form>
           <div className="search-container">
             <label htmlFor="">Location</label>
@@ -33,25 +34,22 @@ export default function SearchPlace(props) {
               onChange={props.handleChange}
             ></button>
           </div>
+
           <div className="search-container">
-            <button
-              type="button"
-              name="guests"
-              className="number-of-guests"
-              onClick={() => props.setIsShownGuest(!props.isShownGuest)}
-            >
+            <button type="button" name="guests" className="number-of-guests">
               Guests
               <br />
               {props.guest}
             </button>
           </div>
-          {/* <div>
-                        {cityName}
-                    </div> */}
           <div className="search-icon">
-            <button className="modal-search-button">Search</button>
+            <button className="modal-search-button desktop-button">
+              Search
+            </button>
           </div>
         </form>
+        <div>{cityName}</div>
+        <button className="modal-search-button mobile-button">Search</button>
       </div>
     </div>
   );

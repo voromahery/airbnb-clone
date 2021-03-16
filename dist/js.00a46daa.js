@@ -7214,7 +7214,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = (eventName in document);
+      var isSupported = eventName in document;
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -28849,26 +28849,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Stay({
   stay
 }) {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "card",
     key: stay.id
-  }, /*#__PURE__*/_react.default.createElement("img", {
+  }, _react.default.createElement("img", {
     src: stay.photo,
     className: "",
     alt: ""
-  }), /*#__PURE__*/_react.default.createElement("div", {
+  }), _react.default.createElement("div", {
     className: "details"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     className: "super-host"
-  }, "Super host"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Super host"), _react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("span", {
+  }, _react.default.createElement("span", {
     className: "type"
-  }, stay.type, " "), /*#__PURE__*/_react.default.createElement("span", {
+  }, stay.type, " "), _react.default.createElement("span", {
     className: "number-of-bed"
-  }, ". ", stay.beds, " beds")), /*#__PURE__*/_react.default.createElement("span", {
+  }, ". ", stay.beds, " beds")), _react.default.createElement("span", {
     className: "star-rating"
-  }, stay.rating)), /*#__PURE__*/_react.default.createElement("p", {
+  }, stay.rating)), _react.default.createElement("p", {
     className: "title"
   }, stay.title)));
 }
@@ -28885,35 +28885,61 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function NumberOfGuest(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement("div", {
     className: "outer-modal"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "modal"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "modal-header"
-  }, /*#__PURE__*/_react.default.createElement("p", {
+  }, _react.default.createElement("p", {
     className: "modal-title"
-  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Edit your search"), _react.default.createElement("button", {
     className: "remove-modal",
     onClick: () => props.setIsShownGuest(!props.isShownGuest)
-  }, "x")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "x")), _react.default.createElement("form", null, _react.default.createElement("div", {
     className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("label", {
+  }, _react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Location"), _react.default.createElement("button", {
     type: "button",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  })), _react.default.createElement("div", {
     className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     type: "button",
     name: "guests",
     className: "number-of-guests"
-  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), props.guest)), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Guests", _react.default.createElement("br", null), props.guest)), _react.default.createElement("div", {
+    className: "guest-modal"
+  }, _react.default.createElement("div", {
+    className: "guests-to-host adults"
+  }, _react.default.createElement("h3", null, "Adults"), _react.default.createElement("p", null, "Age 13 or above"), _react.default.createElement("div", {
+    className: "counters"
+  }, _react.default.createElement("button", {
+    type: "button",
+    onClick: props.increment,
+    className: "add"
+  }, "Add"), _react.default.createElement("b", null, props.adultNumber), _react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrement,
+    className: "minus"
+  }, "Minus"))), _react.default.createElement("div", {
+    className: "guests-to-host children"
+  }, _react.default.createElement("h3", null, "children"), _react.default.createElement("p", null, "Age 2-12"), _react.default.createElement("div", {
+    className: "counters"
+  }, _react.default.createElement("button", {
+    type: "button",
+    onClick: props.incrementChildren,
+    className: "add"
+  }, "Add"), _react.default.createElement("b", null, props.childrenNumber), _react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrementChildren,
+    className: "minus"
+  }, "Minus")))), _react.default.createElement("div", {
     className: "search-icon"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     className: "modal-search-button"
   }, "Search")))));
 }
@@ -28930,43 +28956,44 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function SearchPlace(props) {
-  const cityName = /*#__PURE__*/_react.default.createElement("ul", null, props.apartment.map(stay => /*#__PURE__*/_react.default.createElement("li", {
+  const cityName = _react.default.createElement("ul", null, props.apartment.map(stay => _react.default.createElement("li", {
     className: "city-name",
     key: stay.id
   }, stay.city, ", ", stay.country)));
 
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return _react.default.createElement("div", {
     className: "outer-modal"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "modal"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: "modal-header"
-  }, /*#__PURE__*/_react.default.createElement("p", {
+  }, _react.default.createElement("p", {
     className: "modal-title"
-  }, "Edit your search"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Edit your search"), _react.default.createElement("button", {
     className: "remove-modal",
     onClick: () => props.setIsShownPlace(!props.isShownPlace)
-  }, "clear")), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, "clear")), _react.default.createElement("form", null, _react.default.createElement("div", {
     className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("label", {
+  }, _react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Location"), _react.default.createElement("button", {
     type: "button",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  })), _react.default.createElement("div", {
     className: "search-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     type: "button",
     name: "guests",
-    className: "number-of-guests",
-    onClick: () => props.setIsShownGuest(!props.isShownGuest)
-  }, "Guests", /*#__PURE__*/_react.default.createElement("br", null), props.guest)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "number-of-guests"
+  }, "Guests", _react.default.createElement("br", null), props.guest)), _react.default.createElement("div", {
     className: "search-icon"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "modal-search-button"
-  }, "Search")))));
+  }, _react.default.createElement("button", {
+    className: "modal-search-button desktop-button"
+  }, "Search"))), _react.default.createElement("div", null, cityName), _react.default.createElement("button", {
+    className: "modal-search-button mobile-button"
+  }, "Search")));
 }
 },{"react":"../node_modules/react/index.js"}],"js/App.js":[function(require,module,exports) {
 "use strict";
@@ -29078,39 +29105,39 @@ function App() {
   } //////////////////////////// MODAL //////////////////////////////////
 
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("header", {
     className: "header"
-  }, /*#__PURE__*/_react.default.createElement("h1", {
+  }, _react.default.createElement("h1", {
     className: "page-title"
-  }, /*#__PURE__*/_react.default.createElement("a", {
+  }, _react.default.createElement("a", {
     href: "/",
     className: "page-title-link"
-  }, "Windbnb")), /*#__PURE__*/_react.default.createElement("form", {
+  }, "Windbnb")), _react.default.createElement("form", {
     className: "search-form"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     type: "button",
     className: "search",
     onClick: showPlace
-  }, `${_stays.default[0].city}, ${_stays.default[0].country}`), /*#__PURE__*/_react.default.createElement("button", {
+  }, `${_stays.default[0].city}, ${_stays.default[0].country}`), _react.default.createElement("button", {
     type: "button",
     id: "addGuest",
     className: "add-guest",
     onClick: showGuest
-  }, "Add guest"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Add guest"), _react.default.createElement("button", {
     type: "button",
     className: "search-button"
-  }, "Search"))), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Search"))), _react.default.createElement("div", {
     className: "stay-details"
-  }, /*#__PURE__*/_react.default.createElement("h2", {
+  }, _react.default.createElement("h2", {
     className: "heading"
-  }, "Stay in Finland"), /*#__PURE__*/_react.default.createElement("span", {
+  }, "Stay in Finland"), _react.default.createElement("span", {
     className: "number-of-stays"
-  }, apartment.length, "+ stays"))), /*#__PURE__*/_react.default.createElement("div", {
+  }, apartment.length, "+ stays"))), _react.default.createElement("div", {
     className: "card-container"
-  }, apartment.map(stay => /*#__PURE__*/_react.default.createElement(_Stay.default, {
+  }, apartment.map(stay => _react.default.createElement(_Stay.default, {
     key: stay.id,
     stay: stay
-  }))), isShownGuest ? /*#__PURE__*/_react.default.createElement(_NumberOfGuest.default, {
+  }))), isShownGuest ? _react.default.createElement(_NumberOfGuest.default, {
     apartment: apartment,
     handleChange: handleChange,
     decrement: decrement,
@@ -29124,7 +29151,7 @@ function App() {
     isShownPlace: isShownPlace,
     setIsShownPlace: setIsShownPlace,
     guest: guest
-  }) : null, isShownPlace ? /*#__PURE__*/_react.default.createElement(_PlaceNameModal.default, {
+  }) : null, isShownPlace ? _react.default.createElement(_PlaceNameModal.default, {
     isShownGuest: isShownGuest,
     setIsShownGuest: setIsShownGuest,
     apartment: apartment,
@@ -29148,7 +29175,7 @@ var _App = _interopRequireDefault(require("./App.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
+_reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App.js":"js/App.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -29177,7 +29204,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50349" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53351" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -29208,9 +29235,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
+      } else {
+        window.location.reload();
       }
     }
 

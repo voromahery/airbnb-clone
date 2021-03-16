@@ -59,6 +59,11 @@ main {
   margin: auto;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 .modal,
 main {
   padding-right: 16px;
@@ -252,7 +257,6 @@ footer a {
   width: 100%;
   border: none;
   max-width: -webkit-fill-available;
-  /* padding-left: 26px; */
 }
 
 .search-container {
@@ -370,10 +374,6 @@ footer a {
   width: 28px;
 }
 
-.modal ul {
-  list-style: none;
-}
-
 .city-name {
   padding: 10px;
 }
@@ -395,6 +395,7 @@ footer a {
   text-align: start;
 }
 
+.modal .search-container:nth-child(1) input,
 .modal .search-container:nth-child(1) {
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
@@ -410,6 +411,17 @@ footer a {
 .modal .number-of-guests {
   text-align: initial;
   padding-left: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.modal .search-container:nth-child(1) input,
+.modal .search-container:nth-child(2) button {
+  height: inherit;
+}
+
+.desktop-button {
+  display: none;
 }
 
 @media (min-width: 650px) {
@@ -424,6 +436,14 @@ footer a {
   .header {
     padding-top: 32px;
     padding-bottom: 67px;
+  }
+
+  .desktop-button {
+    display: flex;
+  }
+
+  .mobile-button {
+    display: none;
   }
 
   .stay-details {
