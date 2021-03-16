@@ -28885,6 +28885,34 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function NumberOfGuest(props) {
+  const guests = _react.default.createElement("div", {
+    className: "guest-modal"
+  }, _react.default.createElement("div", {
+    className: "guests-to-host adults"
+  }, _react.default.createElement("h3", null, "Adults"), _react.default.createElement("p", null, "Age 13 or above"), _react.default.createElement("div", {
+    className: "counters"
+  }, _react.default.createElement("button", {
+    type: "button",
+    onClick: props.increment,
+    className: "add"
+  }, "Add"), _react.default.createElement("b", null, props.adultNumber), _react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrement,
+    className: "minus"
+  }, "Minus"))), _react.default.createElement("div", {
+    className: "guests-to-host children"
+  }, _react.default.createElement("h3", null, "children"), _react.default.createElement("p", null, "Age 2-12"), _react.default.createElement("div", {
+    className: "counters"
+  }, _react.default.createElement("button", {
+    type: "button",
+    onClick: props.incrementChildren,
+    className: "add"
+  }, "Add"), _react.default.createElement("b", null, props.childrenNumber), _react.default.createElement("button", {
+    type: "button",
+    onClick: props.decrementChildren,
+    className: "minus"
+  }, "Minus"))));
+
   return _react.default.createElement("div", {
     className: "outer-modal"
   }, _react.default.createElement("div", {
@@ -28912,36 +28940,12 @@ function NumberOfGuest(props) {
     name: "guests",
     className: "number-of-guests"
   }, "Guests", _react.default.createElement("br", null), props.guest)), _react.default.createElement("div", {
-    className: "guest-modal"
-  }, _react.default.createElement("div", {
-    className: "guests-to-host adults"
-  }, _react.default.createElement("h3", null, "Adults"), _react.default.createElement("p", null, "Age 13 or above"), _react.default.createElement("div", {
-    className: "counters"
-  }, _react.default.createElement("button", {
-    type: "button",
-    onClick: props.increment,
-    className: "add"
-  }, "Add"), _react.default.createElement("b", null, props.adultNumber), _react.default.createElement("button", {
-    type: "button",
-    onClick: props.decrement,
-    className: "minus"
-  }, "Minus"))), _react.default.createElement("div", {
-    className: "guests-to-host children"
-  }, _react.default.createElement("h3", null, "children"), _react.default.createElement("p", null, "Age 2-12"), _react.default.createElement("div", {
-    className: "counters"
-  }, _react.default.createElement("button", {
-    type: "button",
-    onClick: props.incrementChildren,
-    className: "add"
-  }, "Add"), _react.default.createElement("b", null, props.childrenNumber), _react.default.createElement("button", {
-    type: "button",
-    onClick: props.decrementChildren,
-    className: "minus"
-  }, "Minus")))), _react.default.createElement("div", {
     className: "search-icon"
   }, _react.default.createElement("button", {
-    className: "modal-search-button"
-  }, "Search")))));
+    className: "modal-search-button desktop-button"
+  }, "Search"))), guests, _react.default.createElement("button", {
+    className: "modal-search-button mobile-button"
+  }, "Search")));
 }
 },{"react":"../node_modules/react/index.js"}],"js/PlaceNameModal.js":[function(require,module,exports) {
 "use strict";
@@ -28991,7 +28995,7 @@ function SearchPlace(props) {
     className: "search-icon"
   }, _react.default.createElement("button", {
     className: "modal-search-button desktop-button"
-  }, "Search"))), _react.default.createElement("div", null, cityName), _react.default.createElement("button", {
+  }, "Search"))), cityName, _react.default.createElement("button", {
     className: "modal-search-button mobile-button"
   }, "Search")));
 }

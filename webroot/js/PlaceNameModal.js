@@ -48,8 +48,8 @@ export default function SearchPlace(props) {
             </button>
           </div>
         </form>
-        <div>{cityName}</div>
-        <button className="modal-search-button mobile-button">Search</button>
+        {cityName}
+          <button className="modal-search-button mobile-button">Search</button>
       </div>
     </div>
   );
