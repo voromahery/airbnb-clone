@@ -399,6 +399,9 @@ footer a {
 .modal .search-container:nth-child(1) {
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
+}
+
+.modal .search-container:nth-child(1) {
   border-bottom: 1px solid #f2f2f2;
 }
 
@@ -415,7 +418,6 @@ footer a {
   border-bottom-left-radius: 16px;
 }
 
-.modal .search-container:nth-child(1) input,
 .modal .search-container:nth-child(2) button {
   height: inherit;
 }

@@ -27,12 +27,18 @@ export default function SearchPlace(props) {
         <form>
           <div className="search-container">
             <label htmlFor="">Location</label>
-            <button
+            {/* <button
               type="button"
               className="city-to-stay"
               name="cityToStay"
               onChange={props.handleChange}
-            ></button>
+            ></button> */}
+            <input
+              type="text"
+              className="city-to-stay"
+              name="cityToStay"
+              onChange={props.handleChange}
+            />
           </div>
 
           <div className="search-container">
@@ -49,7 +55,7 @@ export default function SearchPlace(props) {
           </div>
         </form>
         {cityName}
-          <button className="modal-search-button mobile-button">Search</button>
+        <button className="modal-search-button mobile-button">Search</button>
       </div>
     </div>
   );

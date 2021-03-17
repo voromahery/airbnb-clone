@@ -28852,11 +28852,13 @@ function Stay({
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "card",
     key: stay.id
+  }, _react.default.createElement("div", {
+    className: "image-wrapper"
   }, _react.default.createElement("img", {
     src: stay.photo,
     className: "",
     alt: ""
-  }), _react.default.createElement("div", {
+  })), _react.default.createElement("div", {
     className: "details"
   }, _react.default.createElement("button", {
     className: "super-host"
@@ -28928,8 +28930,8 @@ function NumberOfGuest(props) {
     className: "search-container"
   }, _react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), _react.default.createElement("button", {
-    type: "button",
+  }, "Location"), _react.default.createElement("input", {
+    type: "text",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
@@ -28980,8 +28982,8 @@ function SearchPlace(props) {
     className: "search-container"
   }, _react.default.createElement("label", {
     htmlFor: ""
-  }, "Location"), _react.default.createElement("button", {
-    type: "button",
+  }, "Location"), _react.default.createElement("input", {
+    type: "text",
     className: "city-to-stay",
     name: "cityToStay",
     onChange: props.handleChange
@@ -29208,7 +29210,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53351" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65150" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
