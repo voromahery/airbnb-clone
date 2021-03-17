@@ -26,13 +26,7 @@ export default function SearchPlace(props) {
 
         <form>
           <div className="search-container">
-            <label htmlFor="">Location</label>
-            {/* <button
-              type="button"
-              className="city-to-stay"
-              name="cityToStay"
-              onChange={props.handleChange}
-            ></button> */}
+            <label htmlFor="cityToStay">Location</label>
             <input
               type="text"
               className="city-to-stay"

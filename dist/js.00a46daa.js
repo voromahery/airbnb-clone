@@ -28929,7 +28929,7 @@ function NumberOfGuest(props) {
   }, "x")), _react.default.createElement("form", null, _react.default.createElement("div", {
     className: "search-container"
   }, _react.default.createElement("label", {
-    htmlFor: ""
+    htmlFor: "cityToStay"
   }, "Location"), _react.default.createElement("input", {
     type: "text",
     className: "city-to-stay",
@@ -28981,7 +28981,7 @@ function SearchPlace(props) {
   }, "clear")), _react.default.createElement("form", null, _react.default.createElement("div", {
     className: "search-container"
   }, _react.default.createElement("label", {
-    htmlFor: ""
+    htmlFor: "cityToStay"
   }, "Location"), _react.default.createElement("input", {
     type: "text",
     className: "city-to-stay",
